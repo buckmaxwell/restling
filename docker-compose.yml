@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile  # Path to your custom Dockerfile
+    container_name: restling_db
+    environment:
+      POSTGRES_USER: restling_user
+      POSTGRES_PASSWORD: supersecretpassword
+      POSTGRES_DB: restling
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+# db:
+#   image: postgres:15-alpine
+#   container_name: restling_db
+#   environment:
+#     POSTGRES_USER: restling_user
+#     POSTGRES_PASSWORD: supersecretpassword
+#     POSTGRES_DB: restling
+#   volumes:
+#     - db_data:/var/lib/postgresql/data
+#   ports:
+#     - "5432:5432"
+
+  postgrest:
+    image: postgrest/postgrest:latest
+    container_name: restling_api
+    depends_on:
+      - db
+    environment:
+      PGRST_DB_URI: postgres://restling_user:supersecretpassword@db:5432/restling
+      PGRST_DB_SCHEMA: restling
+      PGRST_DB_ANON_ROLE: anon
+      PGRST_SERVER_PORT: 3000
+      PGRST_JWT_SECRET: your-very-secret-key #LDZULyn8HBAK
+      PGRST_DB_ROLE_CLAIM_KEY: .role
+
+    ports:
+      - "3000:3000"
+
+volumes:
+  db_data:

@@ -1,0 +1,15 @@
+%syntax-version=1.0.0
+%project=restling
+
+create_project_schema 2024-11-29T16:02:41Z Max Buck <maxwellhigginsbuck@gmail.com> # Create schema for project
+create_update_timestamp_trigger 2024-11-29T16:21:51Z Max Buck <maxwellhigginsbuck@gmail.com> # Add update_timestamp trigger function
+add_timestamp_trigger_function 2024-11-29T16:32:10Z Max Buck <maxwellhigginsbuck@gmail.com> # Add function to attach timestamp triggers
+create_user_table 2024-11-29T16:41:04Z Max Buck <maxwellhigginsbuck@gmail.com> # Create user table
+attach_user_table_trigger 2024-11-29T16:53:35Z Max Buck <maxwellhigginsbuck@gmail.com> # Attach trigger to user table
+create_user_function 2024-11-29T17:07:23Z Max Buck <maxwellhigginsbuck@gmail.com> # Add user creation function
+login_user_function 2024-11-29T17:09:03Z Max Buck <maxwellhigginsbuck@gmail.com> # Add user login function
+create_anon_role 2024-11-29T17:15:47Z Max Buck <maxwellhigginsbuck@gmail.com> # Create anon role and permissions
+grant_anon_schema_permissions 2024-11-29T17:18:24Z Max Buck <maxwellhigginsbuck@gmail.com> # Grant anon role permissions on schema
+enable_pgcrypto 2024-11-29T17:20:18Z Max Buck <maxwellhigginsbuck@gmail.com> # Enable pgcrypto extension
+grant_anon_user_permissions 2024-11-29T17:22:46Z Max Buck <maxwellhigginsbuck@gmail.com> # Grant anon permissions on user table
+grant_anon_sequence_permissions 2024-11-29T17:24:27Z Max Buck <maxwellhigginsbuck@gmail.com> # Grant anon permissions on user_id_seq
